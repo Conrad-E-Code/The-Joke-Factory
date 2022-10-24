@@ -1,9 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Joke Factory</title>
+    <meta charset="UTF-8"/>
+    <title>Joke Factory</title>
+    <script defer type="text/javascript" src="./index.js"></script>
 </head>
+
 <body>
     <header>
         <h1>Joke Factory</h1>
@@ -11,26 +14,22 @@
             <ul id="joke-categories-menu">
             <!-- insert joke category menu here -->
             </ul>
-            </nav>
+        </nav>
     </header>
         <main>
-          <div id="joke-of-the-day">
-            <img
-              id=""
-              alt=""
-              src=""
-            />
-            <br>
-            <h2 id="joke">Joke of the Day goes here</h2>
-            <p id="joke-category"></p>
-            <button type="button" id="random-joke">Get A Random Joke</button>
-            <br>
-            <form id="submit-a-joke-card">
-                <label for="submit-title">Submit a Joke</label>
-                <textarea id="new-joke"></textarea>
-                <button type="submit">Sumbit Joke</button>
-            </form>
-          </div>
+            <div id="joke-of-the-day">
+                <img id="mic-image" class="mic-image" src="" alt="Microphone"/>
+                <br>
+                <h2 id="joke">Joke of the Day goes here</h2>
+                <p id="joke-category"></p>
+                <button type="button" id="random-joke">Get A Random Joke</button>
+                <br>
+                <form id="submit-a-joke-card">
+                    <label for="submit-new-joke">Submit a Joke</label>
+                    <textarea name="submit-new-joke" id="submit-new-joke"></textarea>
+                    <input type="submit" value="Submit a Joke"/>
+                </form>
+            </div>
         </main>
 </body>
 </html>
