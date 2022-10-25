@@ -1,37 +1,57 @@
-function randomJokeFetch() {
-const jokeCategory = "christmas"
-fetch(`https://v2.jokeapi.dev/joke/${jokeCategory}?amount=10?format=json`)
-.then(resp => resp.json())
-.then(jokeData => {
-  // console.log(jokeData);
-  console.log(jokeData.jokes)
-  // renderJokeButtons(jokeData)
-  // renderJod(jokeData.jokes)
-  determineJokeType(jokeData.jokes[0])
-})
+// let counter = 0
+const jokeJod = document.getElementById('jod')
+const setupJod = document.getElementById('setup')
+const deliveryJod = document.getElementById('delivery')
+const btn = document.getElementById('random-joke')
+
+
+function randomOneJoke() {
+const jokeCategory = "any"
+fetch(`https://v2.jokeapi.dev/joke/${jokeCategory}?amount=1?format=json&safe-mode`)
+  .then(resp => resp.json())
+  .then(jokeData => {
+    console.log(jokeData);
+    // console.log(jokeData.jokes)
+    // renderJokeButtons(jokeData)
+    // renderJod(jokeData.jokes)
+    determineJokeType(jokeData)
+  })
 }
+
+btn.addEventListener('click', (e) => {
+  // console.log(e)
+  // if (counter < 10) {
+  //   counter++
+  //   // console.log(counter) 
+  // } else {
+  //   counter = 0
+    randomOneJoke()
+
+  //   console.log(counter)
+  //   return counter
+  })
 
 //If joke is two part return set/delivery. if joke is onepart return joke body
 
-/* <h2 id="setup"></h2>
-<p id="delivery"></p>
-<h2 id="jod"></h2>
-<p id="joke-category"></p> */
-
-function jokesLoop(jokeArray) {
-    for(joke of jokeArray) {
-      determineJokeType(joke)}}
+// function jokesLoop(jokeArray) {
+//     for(joke of jokeArray) {
+//       determineJokeType(joke)}}
       //console.log(joke);
 
 function renderTwoPart(joke) {
-    const setupJod = document.getElementById('setup')
-    const deliveryJod = document.getElementById('delivery')
+    
+    setupJod.innerHTML = ''
+    deliveryJod.innerHTML = ''
+    jokeJod.textContent = ''
     setupJod.textContent = `${joke.setup}`
     deliveryJod.textContent = `${joke.delivery}`
 }
 
 function renderOnePart(joke){
-  const jokeJod = document.getElementById('jod')
+  
+  jokeJod.textContent = ''
+  setupJod.innerHTML = ''
+  deliveryJod.innerHTML = ''
   jokeJod.textContent = `${joke.joke}`
 }
 
@@ -57,7 +77,7 @@ function renderJokeButtons(jokeData) {
     })
 }
 
-randomJokeFetch()
+randomOneJoke()
 
 // random joke button 
 
