@@ -3,16 +3,34 @@ const jokeJod = document.getElementById('jod')
 const setupJod = document.getElementById('setup')
 const deliveryJod = document.getElementById('delivery')
 const btn = document.getElementById('random-joke')
-
+const anyButton = document.getElementById('any')
+const miscButton = document.getElementById('misc')
+const progButton = document.getElementById('programming')
+const darkButton = document.getElementById('dark')
+const punButton = document.getElementById('pun')
+const spookyButton = document.getElementById('spooky')
+const xmasButton = document.getElementById('christmas')
+const catButtonArray = []
+catButtonArray.push(anyButton, miscButton, punButton, spookyButton, xmasButton, darkButton, progButton)
+catButtonArray.forEach( (button) => {
+  buttonAddListener(button)
+})
+function buttonAddListener(button) {
+  button.addEventListener('click', (event) => {
+    catButtonHandler(event)})
+}
+function catButtonHandler(event) {
+  console.log(event.target.textContent)
+}
 
 function randomOneJoke() {
 const jokeCategory = "any"
 fetch(`https://v2.jokeapi.dev/joke/${jokeCategory}?amount=1?format=json&safe-mode`)
   .then(resp => resp.json())
   .then(jokeData => {
-    console.log(jokeData);
+    //console.log(jokeData);
     // console.log(jokeData.jokes)
-    // renderJokeButtons(jokeData)
+     //renderJokeButtons(jokeData)
     // renderJod(jokeData.jokes)
     determineJokeType(jokeData)
   })
@@ -89,5 +107,6 @@ randomOneJoke()
 // }
 
 // display Joke
+
 
 
