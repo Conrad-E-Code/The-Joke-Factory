@@ -8,35 +8,40 @@
 </head>
 
 <body>
-    <header>
+    <header id="menu-bar" style="margin-top: -10px; margin-left: -10px;">
         <h1 id:main-title>The Joke Factory</h1>
-        <nav>
+        <br>
+        <nav id="nav-buttons">
             <div id="joke-categories-menu">
-            <!-- insert joke category menu here -->
-            <button id="any">any</button>
-            <button id="misc">misc</button>
-            <button id="programming">programming</button>
-            <button id="dark">dark</button>
-            <button id="pun">pun</button>
-            <button id="spooky">spooky</button>
-            <button id="christmas">christmas</button>
+            <button id="any">Any</button>
+            <button id="dark">Dark</button>
+            <button id="misc">Misc</button>
+            <button id="programming">Programming</button>
+            <button id="pun">Pun</button>
+            <button id="spooky">Spooky</button>
+            <button id="christmas">Christmas</button>
             </div>
         </nav>
     </header>
         <main>
             <div id="joke-of-the-day">
-                <!-- <textarea id="jod"></textarea> -->
-                <h2 id="setup"></h2>
+                <h2 id="jod-title">Joke of the Day</h2>
+                <h3 id="setup"></h3>
                 <p id="delivery"></p>
-                <h2 id="jod"></h2>
+                <h3 id="jod"></h3>
                 <p id="joke-category"></p>
                 <button type="button" id="random-joke">Get A Random Joke</button>
                 <br>
             </div>
+            <div id="joke-by-category">
+                <h2 id="joke-categoty-title">Jokes by Category</h2>
+
+            </div>
             <div>
                 <form id="submit-a-joke-card">
-                    <label for="submit-new-joke">Submit a Joke</label>
-                    <textarea name="submit-new-joke" id="submit-new-joke"></textarea>
+                    <h2 id="jod-title">Submit a Joke</h2>
+                    <textarea name="submit-new-joke" id="submit-new-joke" placeholder="Enter joke here"></textarea>
+                    <br>
                     <input type="submit" value="Submit a Joke"/>
                 </form>
             </div>
