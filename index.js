@@ -1,10 +1,11 @@
 function randomJokeFetch() {
-const jokeCategory = "pun"
+const jokeCategory = "christmas"
 fetch(`https://v2.jokeapi.dev/joke/${jokeCategory}?amount=10?format=json`)
 .then(resp => resp.json())
 .then(jokeData => {
   //console.log(jokeData);
   console.log(jokeData.jokes)
+  renderJokeButtons(jokeData)
 //getJokes(jokeData.jokes)
 }
   )
@@ -20,14 +21,16 @@ fetch(`https://v2.jokeapi.dev/joke/${jokeCategory}?amount=10?format=json`)
   }}
   randomJokeFetch()
 
-  function Button() {
-    const anyButton = document.getElementById("any")
-    const miscButton = document.getElementById("misc")
-    const progButton = document.getElementById("programming")
-    const darkButton = document.getElementById("dark")
-    const punButton = document.getElementById("pun")
-    const spookyButton = document.getElementById("spooky")
-    const xmasButton = document.getElementById("Christmas")
-    const buttonArray = [anyButton, miscButton, darkButton, punButton, spookyButton, xmasButton, progButton]
-function addButtonClick(array) {
-}
+
+  //render joke buttons.
+
+  function renderJokeButtons(jokeData) {
+    const catButtonList = document.createElement("ul")  //creating html list
+    const buttonDiv = document.getElementById("joke-categories-menu")
+    buttonDiv.append(catButtonList)
+    jokeData.jokes.forEach((joke) => {
+      const jokeButton = document.createElement("button")
+      jokeButton.textContent = joke.category
+      catButtonList.append(jokeButton)
+    })
+  }
