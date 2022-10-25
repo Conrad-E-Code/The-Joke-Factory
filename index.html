@@ -3,13 +3,13 @@
 
 <head>
     <meta charset="UTF-8"/>
-    <title>Joke Factory</title>
+    <title>Joke Factory</title> <link rel="stylesheet" type="text/css" href="styles.css"/>
     <script defer type="text/javascript" src="./index.js"></script>
 </head>
 
 <body>
     <header>
-        <h1>Joke Factory</h1>
+        <h1 id:main-title>The Joke Factory</h1>
         <nav>
             <div id="joke-categories-menu">
             <!-- insert joke category menu here -->
@@ -25,9 +25,10 @@
     </header>
         <main>
             <div id="joke-of-the-day">
-                <img id="mic-image" class="mic-image" src="" alt="Microphone"/>
-                <br>
-                <h2 id="joke">Joke of the Day goes here</h2>
+                <!-- <textarea id="jod"></textarea> -->
+                <h2 id="setup"></h2>
+                <p id="delivery"></p>
+                <h2 id="jod"></h2>
                 <p id="joke-category"></p>
                 <button type="button" id="random-joke">Get A Random Joke</button>
                 <br>
@@ -39,4 +40,5 @@
             </div>
         </main>
 </body>
+
 </html>

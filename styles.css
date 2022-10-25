@@ -1,0 +1,27 @@
+@ import url ('https://fonts.google.com/specimen/Luckiest+Guy');
+
+* {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    /* box-sizing: border-box; */
+  }
+
+body {
+    display: grid;
+    width: 100%;
+    max-width: 1920px;
+    display: block;
+    margin: auto;
+    min-height: 100vh;
+    background-image: url('assets/joke-factory-background.jpg');
+    background-size: cover;
+    background-position: bottom right;
+    background-color: #210504;
+    margin: 30px;
+    font-family: Open Sans, sans-serif;
+    color: #fff;
+}
+
+#main-title {
+  font-family: Luckiest;
+}
