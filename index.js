@@ -194,6 +194,7 @@ function renderOnePartBtn() {
   const onePartBtn = document.createElement("button")
   onePartBtn.textContent = "One Part Joke Form"
   onePartBtn.type = "button"
+  onePartBtn.id = "one-part-button"
   submitForm.appendChild(onePartBtn)
   onePartBtn.addEventListener("click", (event) => {onePartBtnClick(event)})
 }
@@ -202,6 +203,19 @@ function renderTwoPartBtn() {
   const twoPartBtn = document.createElement("button")
   twoPartBtn.type = "button"
   twoPartBtn.textContent = "Two Part Joke Form"
+  twoPartBtn.id = "two-part-button"
   twoPartBtn.addEventListener("click", (event) => {twoPartBtnClick(event)})
   submitForm.appendChild(twoPartBtn)
 }
+
+/*Bunch of crap 
+sd'lkfgjs;dlkfgj'dlkfsgj'alkfsdjg'lskfdajg
+adfg;kjfsdgn'lskfdjg'lksfdjg'k;sfdjg;lksdjfg'lkksfd
+adfgkjsdf;lkgjd'f;gjs;djgs;flkjxg'dlkfsjg
+;fsd
+adf'gljsdf;'lgkjdsf'lkgjs'lfkdgj'sfdg
+sdfg'lksdjfg';jsfd'gjsd'fgj'sdkfjg'lsdkfgj
+sdfg'lkisdjfg'lksjdf'glkjsdf'gkjsdf'lkgjsdf
+sdf'lkgnjsd'lfgjs'dlfkgjs'dlkfgj'sdlkfjgsdf
+gsdfl'kgkjsdf'lglkjsdf'lkgjsdf'lkgjs'ldkfgj'lskfdgj
+*/
