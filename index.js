@@ -207,3 +207,15 @@ function renderTwoPartBtn() {
   twoPartBtn.addEventListener("click", (event) => {twoPartBtnClick(event)})
   submitForm.appendChild(twoPartBtn)
 }
+
+/*Bunch of crap 
+sd'lkfgjs;dlkfgj'dlkfsgj'alkfsdjg'lskfdajg
+adfg;kjfsdgn'lskfdjg'lksfdjg'k;sfdjg;lksdjfg'lkksfd
+adfgkjsdf;lkgjd'f;gjs;djgs;flkjxg'dlkfsjg
+;fsd
+adf'gljsdf;'lgkjdsf'lkgjs'lfkdgj'sfdg
+sdfg'lksdjfg';jsfd'gjsd'fgj'sdkfjg'lsdkfgj
+sdfg'lkisdjfg'lksjdf'glkjsdf'gkjsdf'lkgjsdf
+sdf'lkgnjsd'lfgjs'dlfkgjs'dlkfgj'sdlkfjgsdf
+gsdfl'kgkjsdf'lglkjsdf'lkgjsdf'lkgjs'ldkfgj'lskfdgj
+*/
