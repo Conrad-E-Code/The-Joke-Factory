@@ -93,6 +93,9 @@ function renderJokeButtons(jokeData) {
       jokeButton.textContent = joke.category
       catButtonList.append(jokeButton)
     })
+    
+   renderOnePartBtn()
+   renderTwoPartBtn()
 }
 
 randomOneJoke()
@@ -107,6 +110,81 @@ randomOneJoke()
 // }
 
 // display Joke
+const submitForm = document.getElementById("submit-a-joke-card")
+/*const jokeType = document.getElementById("part-quantity-input")
+console.log(jokeType)
+console.log(submitForm)
+const onePartButton = document.createElement("button")
+const twoPartButton = document.createElement("button")
+//onePartButton.textContent = "One Part Joke"
+twoPartButton.textContent = "Two Part Joke"
+submitForm.appendChild(onePartButton, twoPartButton)*/
 
+function renderSelectButtons() {
+  const submitForm = document.getElementById("submit-a-joke-card")
+  /*const onePartBtn = document.createElement("button")
+  const twoPartBtn = document.createElement("button")
+ // console.log(submitForm)
+ // console.log(onePartBtn)
+ // console.log(twoPartBtn)
+ onePartBtn.textContent = "One Part Joke"
+ twoPartBtn.textContent = "Two Part Joke"
+ onePartBtn.type = "button"
+ twoPartBtn.type = "button"
+ onePartBtn.addEventListener("click", (event) => {onePartBtnClick(event)})
+ twoPartBtn.addEventListener("click", (event) => {twoPartBtnClick(event)})
+ submitForm.append(onePartBtn, twoPartBtn)
+ */
+renderOnePartBtn()
+renderTwoPartBtn()
+}
+renderSelectButtons()
+function onePartBtnClick(event) 
+{
+console.log("clicked one-part")
+event.target.parentNode.innerHTML =""
+const jokeInput = document.createElement("Input")
+jokeInput.type = "text"
+jokeInput.placeholder = "Enter Joke Content Here"
+submitForm.append(jokeInput)
+renderSubmitButton()
+renderTwoPartBtn()
+}
+function twoPartBtnClick(event) {
 
+console.log("clicked two part")
+event.target.parentNode.innerHTML =""
+const setupInput = document.createElement("input")
+const deliveryInput = document.createElement("input")
+setupInput.type = "text"
+deliveryInput.type = "text"
+setupInput.placeholder = "Input Setup Here"
+deliveryInput.placeholder = " Input Delivery here"
+submitForm.append(setupInput, deliveryInput)
+renderSubmitButton()
+renderOnePartBtn()
+}
+function renderSubmitButton() {
+  const submitButton = document.createElement("button")
+  submitButton.id = "submit-button"
+  submitButton.type = "submit"
+  submitButton.textContent = "Submit a Joke"
+  submitForm.append(submitButton)
+ // renderOnePartBtn()
+  }
 
+function renderOnePartBtn() {
+  const onePartBtn = document.createElement("button")
+  onePartBtn.textContent = "One Part Joke Form"
+  onePartBtn.type = "button"
+  submitForm.appendChild(onePartBtn)
+  onePartBtn.addEventListener("click", (event) => {onePartBtnClick(event)})
+}
+
+function renderTwoPartBtn() {
+  const twoPartBtn = document.createElement("button")
+  twoPartBtn.type = "button"
+  twoPartBtn.textContent = "Two Part Joke Form"
+  twoPartBtn.addEventListener("click", (event) => {twoPartBtnClick(event)})
+  submitForm.appendChild(twoPartBtn)
+}
