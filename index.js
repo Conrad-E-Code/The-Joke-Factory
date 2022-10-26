@@ -1,7 +1,11 @@
-// let counter = 0
+let counter = 0
 const jokeJod = document.getElementById('jod')
 const setupJod = document.getElementById('setup')
 const deliveryJod = document.getElementById('delivery')
+const jokebyCategory = document.getElementById('joke-by-category')
+const setupCat = document.getElementById('setup-cat')
+const deliveryCat = document.getElementById('delivery-cat')
+const singleCat = document.getElementById('cat-joke')
 const btn = document.getElementById('random-joke')
 const anyButton = document.getElementById('any')
 const miscButton = document.getElementById('misc')
@@ -16,27 +20,81 @@ catButtonArray.forEach( (button) => {
   buttonAddListener(button)
 })
 function buttonAddListener(button) {
-  button.addEventListener('click', (event) => {
-    catButtonHandler(event)})
+  button.addEventListener('click', (buttonEvent) => {
+    catButtonHandler(buttonEvent)})
 }
-function catButtonHandler(event) {
-  console.log(event.target.textContent)
- const btncontent = event.target.textContent
+function catButtonHandler(buttonEvent) {
+  // console.log(event.target.textContent)
+ const btncontent = buttonEvent.target.textContent
  fetch(`https://v2.jokeapi.dev/joke/${btncontent}?amount=10?format=json&safe-mode`)
  .then(resp => resp.json())
  .then(jokeData =>{
-   console.log(jokeData)
+  // console.log(jokeData.jokes[0])
+  // function still works when console logging
+  // console.log(determineJokeTypeCat(jokeData.jokes[0]))
+  scrollThruJoke(jokeData, buttonEvent) 
+  determineJokeTypeCat(jokeData.jokes[counter]) 
  })
 }
 
+function scrollThruJoke(jokeData, buttonEvent){
+ document.addEventListener('keydown', (keyEvent)=> {
+    scrollHandler(jokeData, keyEvent, buttonEvent)
+  })
+}
 
-// function categoryjoke(){
-//   fetch(`https://v2.jokeapi.dev/joke/${category}?amount=10?format=json&safe-mode`)
-//   .then(resp => resp.json())
-//   .then(jokeData =>{
-//     console.log(jokeData)
-//   })
-// }
+function scrollHandler(jokeData, keyEvent, buttonEvent){
+
+  if (keyEvent.key =="ArrowRight"){
+    console.log(keyEvent)
+    if(counter < 9){
+      counter++;
+      console.log(`${counter} IM GOING FORWARDS`)
+      console.log(jokeData.jokes[counter])
+      determineJokeTypeCat(jokeData.jokes[counter]);
+    } else  {
+      // console.log(counter)
+      counter = 0
+      // console.log(counter)
+      jokeMaxHandler(keyEvent, buttonEvent)
+    }
+  } else if (keyEvent.key =="ArrowLeft"){
+    if(counter > 0){
+      console.log(`${counter} Im going backwards`)
+      determineJokeTypeCat(jokeData.jokes[counter])
+      counter--;
+    } else if(counter < 0) {
+      console.log("left key was pressed below 0")
+    }
+}}
+
+function determineJokeTypeCat(joke) {
+  if (joke.type === "twopart") {
+    renderTwoPartCat(joke)
+    // console.log(`SETUP ${joke.setup}, DELIVERY ${joke.delivery}`)
+  } else {
+    renderOnePartCat(joke)
+    // console.log(`JOKE ${joke.joke}`)
+
+    
+}}
+
+
+function renderTwoPartCat(joke) {
+  setupCat.innerHTML = ''
+  deliveryCat.innerHTML = ''
+  singleCat.textContent = ''
+  setupCat.textContent = `${joke.setup}`
+  deliveryCat.textContent = `${joke.delivery}`
+
+}
+
+function renderOnePartCat(joke){
+singleCat.textContent = ''
+setupCat.innerHTML = ''
+deliveryCat.innerHTML = ''
+singleCat.textContent = `${joke.joke}`
+}
 
 
 
@@ -204,4 +262,18 @@ function renderTwoPartBtn() {
   twoPartBtn.textContent = "Two Part Joke Form"
   twoPartBtn.addEventListener("click", (event) => {twoPartBtnClick(event)})
   submitForm.appendChild(twoPartBtn)
+}
+
+function jokeMaxHandler(keyEvent, buttonEvent){
+  const btncontent = buttonEvent.target.textContent
+  fetch(`https://v2.jokeapi.dev/joke/${btncontent}?amount=10?format=json&safe-mode`)
+  .then(resp => resp.json())
+  .then(jokeData =>{
+   // console.log(jokeData.jokes[0])
+   // function still works when console logging
+   // console.log(determineJokeTypeCat(jokeData.jokes[0]))
+  //  determineJokeTypeCat(jokeData.jokes[counter]) 
+  //  scrollThruJoke(jokeData) 
+  scrollHandler(jokeData, keyEvent, buttonEvent)
+  })
 }
