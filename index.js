@@ -21,7 +21,24 @@ function buttonAddListener(button) {
 }
 function catButtonHandler(event) {
   console.log(event.target.textContent)
+ const btncontent = event.target.textContent
+ fetch(`https://v2.jokeapi.dev/joke/${btncontent}?amount=10?format=json&safe-mode`)
+ .then(resp => resp.json())
+ .then(jokeData =>{
+   console.log(jokeData)
+ })
 }
+
+
+// function categoryjoke(){
+//   fetch(`https://v2.jokeapi.dev/joke/${category}?amount=10?format=json&safe-mode`)
+//   .then(resp => resp.json())
+//   .then(jokeData =>{
+//     console.log(jokeData)
+//   })
+// }
+
+
 
 function randomOneJoke() {
 const jokeCategory = "any"
