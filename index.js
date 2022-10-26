@@ -194,6 +194,7 @@ function renderOnePartBtn() {
   const onePartBtn = document.createElement("button")
   onePartBtn.textContent = "One Part Joke Form"
   onePartBtn.type = "button"
+  onePartBtn.id = "one-part-button"
   submitForm.appendChild(onePartBtn)
   onePartBtn.addEventListener("click", (event) => {onePartBtnClick(event)})
 }
@@ -202,6 +203,7 @@ function renderTwoPartBtn() {
   const twoPartBtn = document.createElement("button")
   twoPartBtn.type = "button"
   twoPartBtn.textContent = "Two Part Joke Form"
+  twoPartBtn.id = "two-part-button"
   twoPartBtn.addEventListener("click", (event) => {twoPartBtnClick(event)})
   submitForm.appendChild(twoPartBtn)
 }
