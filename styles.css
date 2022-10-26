@@ -6,7 +6,7 @@
   }
 
 body {
-    display: grid;
+    /* display: grid; */
     width: 100%;
     max-width: 1920px;
     min-height: 100vh;
@@ -22,43 +22,39 @@ body {
 #menu-bar{
   background-color: black;
   width: 100%;
-  display:grid;
+  display: block;
   padding-left: 20px;
   padding-right: 20px;
-  /* padding-top: 0px;
-  padding-bottom: 0px; */
+  padding-top: 10px;
+  padding-bottom: 0px;
   align-content: center;
+  margin-top: 0;
+  margin-left: 0;
   text-align: center;
   justify-content: center;
-  align-items: center;
   text-transform: uppercase;
+  /* align-items: center; */
 }
 
 #main-title {
   font-family: Luckiest;
-}
-
-h1 {
-  font-size: 46px;
+  font-size: px;
   line-height: 48px;
-}
+  padding-bottom: 0px;
+  margin-bottom: 0px;
 
-h2 {
-  text-decoration: underline;
 }
 
 #joke-categories-menu {
-  padding-bottom: 0px;
-  margin-bottom: 0px;
+  margin-bottom: 40px;
 }
 
 #joke-of-the-day,
-#joke-by-category,
-#submit-a-joke-card {
+#joke-by-category {
   background-color: rgb(255,255,255, 0.55);
   color: black;
   border-radius: 10px;
-  max-width: 540px;
+  max-width: 600px;
   padding-left: 20px;
   padding-right: 25px;
   padding-top: 5px;
@@ -66,9 +62,8 @@ h2 {
   margin: 30px;
 }
 
-#submit-new-joke {
-  width: 100%;
-  margin-bottom: 16px;
+h2 {
+  text-decoration: underline;
 }
 
 #setup,
@@ -80,15 +75,24 @@ button {
   background-color: black;
   color: #fff;
   border: black;
-  padding: 14px;
+  padding: 10px;
   border-radius: 5px;
-  margin: 0px;
+  margin-left: 0px;
+  margin-right: 16px;
 }
 
 button:hover {
   background-color: #fff;
   transition: 0.7s;
   color: black;
+  border: 2px solid black;
+  cursor: pointer;
+}
+
+button:active {
+  background-color: #fff;
+  transition: 0.7s;
+  color: #ff1410;
   border: 2px solid black;
   cursor: pointer;
 }
@@ -107,4 +111,21 @@ input[type=submit]:hover {
   color: black;
   border: 2px solid black;
   cursor: pointer;
+}
+
+#submit-a-joke-card {
+  background-color: rgb(255,255,255, 0.55);
+  color: black;
+  border-radius: 10px;
+  max-width: 600px;
+  padding-left: 20px;
+  padding-right: 25px;
+  padding-top: 5px;
+  padding-bottom: 30px;
+  margin: 30px;
+  display: flex-box;
+}
+
+#one-part-button {
+  margin: 10px
 }
