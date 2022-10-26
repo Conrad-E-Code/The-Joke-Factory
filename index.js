@@ -186,6 +186,7 @@ randomOneJoke()
 
 // display Joke
 const submitForm = document.getElementById("submit-a-joke-card")
+
 /*const jokeType = document.getElementById("part-quantity-input")
 console.log(jokeType)
 console.log(submitForm)
@@ -196,7 +197,6 @@ twoPartButton.textContent = "Two Part Joke"
 submitForm.appendChild(onePartButton, twoPartButton)*/
 
 function renderSelectButtons() {
-  const submitForm = document.getElementById("submit-a-joke-card")
   /*const onePartBtn = document.createElement("button")
   const twoPartBtn = document.createElement("button")
  // console.log(submitForm)
@@ -224,6 +224,7 @@ jokeInput.placeholder = "Enter Joke Content Here"
 submitForm.append(jokeInput)
 renderSubmitButton()
 renderTwoPartBtn()
+createCategoryList()
 }
 function twoPartBtnClick(event) {
 
@@ -238,6 +239,7 @@ deliveryInput.placeholder = " Input Delivery here"
 submitForm.append(setupInput, deliveryInput)
 renderSubmitButton()
 renderOnePartBtn()
+createCategoryList()
 }
 function renderSubmitButton() {
   const submitButton = document.createElement("button")
@@ -252,6 +254,7 @@ function renderOnePartBtn() {
   const onePartBtn = document.createElement("button")
   onePartBtn.textContent = "One Part Joke Form"
   onePartBtn.type = "button"
+  onePartBtn.id = "one-part-button"
   submitForm.appendChild(onePartBtn)
   onePartBtn.addEventListener("click", (event) => {onePartBtnClick(event)})
 }
@@ -260,9 +263,11 @@ function renderTwoPartBtn() {
   const twoPartBtn = document.createElement("button")
   twoPartBtn.type = "button"
   twoPartBtn.textContent = "Two Part Joke Form"
+  twoPartBtn.id = "two-part-button"
   twoPartBtn.addEventListener("click", (event) => {twoPartBtnClick(event)})
   submitForm.appendChild(twoPartBtn)
 }
+
 
 function jokeMaxHandler(keyEvent, buttonEvent){
   const btncontent = buttonEvent.target.textContent
@@ -277,3 +282,42 @@ function jokeMaxHandler(keyEvent, buttonEvent){
   scrollHandler(jokeData, keyEvent, buttonEvent)
   })
 }
+
+function createCategoryList() {
+  createCheckBox("Any")
+  createCheckBox("Christmas")
+  createCheckBox("Spooky")
+  createCheckBox("Pun")
+  createCheckBox("Programming")
+  createCheckBox("Misc")
+  createCheckBox("Dark")
+}
+
+function createCheckBox(checkBoxContent) {
+
+const checkBox = document.createElement("input")
+checkBox.class = "form-control"
+checkBox.type = "checkbox"
+checkBox.name = `category-checkbox`
+//checkBox.label = `${checkBoxContent}`
+checkBox.value = `${checkBoxContent}`
+const checkBoxLabel = document.createElement("label")
+checkBoxLabel.textContent = `${checkBoxContent}`
+submitForm.prepend(checkBoxLabel)
+checkBoxLabel.append(checkBox)
+//console.log(submitForm)
+console.log(checkBoxLabel)
+}
+
+/*
+<label class="form-control">
+  <input type="checkbox" name="checkbox" />
+  Checkbox
+</label>
+
+<label class="form-control">
+  <input type="checkbox" name="checkbox-checked" checked />
+  Checkbox - checked
+</label>
+*/
+
