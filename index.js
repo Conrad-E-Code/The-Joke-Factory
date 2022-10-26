@@ -128,6 +128,7 @@ randomOneJoke()
 
 // display Joke
 const submitForm = document.getElementById("submit-a-joke-card")
+
 /*const jokeType = document.getElementById("part-quantity-input")
 console.log(jokeType)
 console.log(submitForm)
@@ -138,7 +139,6 @@ twoPartButton.textContent = "Two Part Joke"
 submitForm.appendChild(onePartButton, twoPartButton)*/
 
 function renderSelectButtons() {
-  const submitForm = document.getElementById("submit-a-joke-card")
   /*const onePartBtn = document.createElement("button")
   const twoPartBtn = document.createElement("button")
  // console.log(submitForm)
@@ -166,6 +166,7 @@ jokeInput.placeholder = "Enter Joke Content Here"
 submitForm.append(jokeInput)
 renderSubmitButton()
 renderTwoPartBtn()
+createCategoryList()
 }
 function twoPartBtnClick(event) {
 
@@ -180,6 +181,7 @@ deliveryInput.placeholder = " Input Delivery here"
 submitForm.append(setupInput, deliveryInput)
 renderSubmitButton()
 renderOnePartBtn()
+createCategoryList()
 }
 function renderSubmitButton() {
   const submitButton = document.createElement("button")
@@ -208,14 +210,40 @@ function renderTwoPartBtn() {
   submitForm.appendChild(twoPartBtn)
 }
 
-/*Bunch of crap 
-sd'lkfgjs;dlkfgj'dlkfsgj'alkfsdjg'lskfdajg
-adfg;kjfsdgn'lskfdjg'lksfdjg'k;sfdjg;lksdjfg'lkksfd
-adfgkjsdf;lkgjd'f;gjs;djgs;flkjxg'dlkfsjg
-;fsd
-adf'gljsdf;'lgkjdsf'lkgjs'lfkdgj'sfdg
-sdfg'lksdjfg';jsfd'gjsd'fgj'sdkfjg'lsdkfgj
-sdfg'lkisdjfg'lksjdf'glkjsdf'gkjsdf'lkgjsdf
-sdf'lkgnjsd'lfgjs'dlfkgjs'dlkfgj'sdlkfjgsdf
-gsdfl'kgkjsdf'lglkjsdf'lkgjsdf'lkgjs'ldkfgj'lskfdgj
+function createCategoryList() {
+  createCheckBox("Any")
+  createCheckBox("Christmas")
+  createCheckBox("Spooky")
+  createCheckBox("Pun")
+  createCheckBox("Programming")
+  createCheckBox("Misc")
+  createCheckBox("Dark")
+}
+
+function createCheckBox(checkBoxContent) {
+
+const checkBox = document.createElement("input")
+checkBox.class = "form-control"
+checkBox.type = "checkbox"
+checkBox.name = `category-checkbox`
+//checkBox.label = `${checkBoxContent}`
+checkBox.value = `${checkBoxContent}`
+const checkBoxLabel = document.createElement("label")
+checkBoxLabel.textContent = `${checkBoxContent}`
+submitForm.prepend(checkBoxLabel)
+checkBoxLabel.append(checkBox)
+//console.log(submitForm)
+console.log(checkBoxLabel)
+}
+
+/*
+<label class="form-control">
+  <input type="checkbox" name="checkbox" />
+  Checkbox
+</label>
+
+<label class="form-control">
+  <input type="checkbox" name="checkbox-checked" checked />
+  Checkbox - checked
+</label>
 */
