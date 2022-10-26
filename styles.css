@@ -22,26 +22,34 @@ body {
 #menu-bar{
   background-color: black;
   width: 100%;
-  display: block;
+  display:grid;
   padding-left: 20px;
   padding-right: 20px;
-  padding-top: 10px;
-  padding-bottom: 0px;
+  /* padding-top: 0px;
+  padding-bottom: 0px; */
   align-content: center;
-  margin-top: 0;
-  margin-left: 0;
   text-align: center;
   justify-content: center;
+  align-items: center;
   text-transform: uppercase;
-  /* align-items: center; */
 }
 
 #main-title {
   font-family: Luckiest;
 }
 
+h1 {
+  font-size: 46px;
+  line-height: 48px;
+}
+
+h2 {
+  text-decoration: underline;
+}
+
 #joke-categories-menu {
-  margin-bottom: 40px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
 }
 
 #joke-of-the-day,
@@ -63,10 +71,6 @@ body {
   margin-bottom: 16px;
 }
 
-h2 {
-  text-decoration: underline;
-}
-
 #setup,
 #jod {
   font-style: italic;
@@ -76,8 +80,9 @@ button {
   background-color: black;
   color: #fff;
   border: black;
-  padding: 10px;
+  padding: 14px;
   border-radius: 5px;
+  margin: 0px;
 }
 
 button:hover {
