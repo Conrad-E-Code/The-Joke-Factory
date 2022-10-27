@@ -248,6 +248,7 @@ const jokeInput = document.createElement("Input")
 jokeInput.type = "text"
 jokeInput.placeholder = "Enter Joke Content Here"
 jokeInput.id = "joke-input"
+jokeInput.setAttribute("required", "")
 submitForm.append(jokeInput)
 renderSubmitButton()
 renderTwoPartBtn()
@@ -271,6 +272,8 @@ deliveryInput.placeholder = " Input Delivery here"
 
 setupInput.id = "setup-input"
 deliveryInput.id = "delivery-input"
+setupInput.setAttribute("required", "")
+deliveryInput.setAttribute("required", "")
 
 submitForm.append(setupInput, deliveryInput)
 renderSubmitButton()
@@ -334,8 +337,9 @@ function createCheckBox(checkBoxContent) {
 
 const checkBox = document.createElement("input")
 checkBox.class = "form-control"
-checkBox.type = "checkbox"
+checkBox.type = "radio"
 checkBox.name = `category-checkbox`
+checkBox.value = `${checkBoxContent}`
 checkBox.id = `${checkBoxContent}-input`
 //checkBox.label = `${checkBoxContent}`
 //checkBox.value = `${checkBoxContent}`
@@ -381,16 +385,28 @@ checkBoxLabel.append(checkBox)
 
 function submitOnePartListener() {
   let submitOnePartForm = document.getElementById("submit-a-joke-card")
+  
 submitOnePartForm.addEventListener("submit", (submitEvent) => {
   submitEvent.preventDefault()
   console.log(`${submitEvent} <--- CL submitEventOne`)
   console.log(`${submitEvent.target["joke-input"]["value"]} <---- CONSOLE LOG EVENT target joke-input value`)
   //console.log(`${submitEvent.target["setup-input"]["value"]}  <--- console log setup-input value`)
   //console.log(`${submitEvent.target["delivery-input"]["value"]}  <--- console log delivery-input value`)
+
+  //newOPJoke.joke = submitEvent.target["joke-input"]
+  //console.log(jokeInput.innerHTML())
   const newOPJoke = {
-    jokeKey: submitEvent.target}["joke-input"]["value"]
-})
-fetchnewJoke(newOPJoke)
+    "category": "empty-category",
+    "type": "single",
+    "joke": submitEvent.target["joke-input"]["value"]
+                    }
+
+  radioButtons(newOPJoke)
+  console.log(`${newOPJoke["joke"]} I'm the joke called by key in an object`)
+  console.log(`${newOPJoke["category"]} I'm the category of the single joke called by key in an object`)
+}
+)
+//fetchnewJoke(newOPJoke)
 }
 
 function submitTwoPartListener() {
@@ -399,23 +415,37 @@ submitTwoPartForm.addEventListener("submit", (submitEvent) => {
   submitEvent.preventDefault()
   console.log(`${submitEvent} <--- CL submitEventOne`)
   //console.log(`${submitEvent.target["joke-input"]["value"]} <---- CONSOLE LOG EVENT target joke-input value`)
-  console.log(`${submitEvent.target["setup-input"]["value"]}  <--- console log setup-input value`)
-  console.log(`${submitEvent.target["delivery-input"]["value"]}  <--- console log delivery-input value`)
-  /*const newTPJoke = {setupKey: submitEvent.target  }*/
+  console.log(`${submitEvent.target["setup-input"].value}  <--- console log setup-input value`)
+  console.log(`${submitEvent.target["delivery-input"].value}  <--- console log delivery-input value`)
+  const newTPJoke = {
+    "category": "empty-category", 
+    "type": "twopart",
+    "setup": submitEvent.target["setup-input"].value,
+    "delivery" : submitEvent.target["delivery-input"].value
+    submitFormPost()
+  }
+  radioButtons(newTPJoke)
+  console.log(`${newTPJoke.setup} I'm the setup called by key and object`)
+  console.log(`${newTPJoke.delivery} I'm the delivery called by key and object`)
+  console.log(`${newTPJoke.category} I'm the category called by key and object`)
 })
 }
 
+function radioButtons(newJoke) {
+const radios = document.getElementsByName("category-checkbox")
+for (radio of radios) {
+  if (radio.checked) {
+    newJoke.category = `${radio.value}`
+  }
+}
+}
 
-
-/*
-MODIFIED FETCH
 
 function submitFormPOST(newJoke) {
 
-
-
-
-  method: 'POST',
+fetch("submiturl", 
+{
+ method: 'POST',
   headers: { 
     'Content-Type': 'application/json'
   },
@@ -424,4 +454,3 @@ function submitFormPOST(newJoke) {
 .then(resp => resp.json())
 .then((newJoke) => console.log(newJoke))
 }
-*/
