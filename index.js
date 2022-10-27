@@ -136,7 +136,7 @@ fetch(`https://v2.jokeapi.dev/joke/${jokeCategory}?amount=1?format=json&safe-mod
     determineJokeType(jokeData)
   })
 }
-
+                                                  // buttun event listener below.
 btn.addEventListener('click', (e) => {
   // console.log(e)
   // if (counter < 10) {
@@ -240,7 +240,7 @@ renderOnePartBtn()
 renderTwoPartBtn()
 }
 renderSelectButtons()
-function onePartBtnClick(event) 
+function onePartBtnClick(event)                                               // one part create a joke click
 {
 console.log("clicked one-part")
 event.target.parentNode.innerHTML =""
@@ -252,8 +252,10 @@ submitForm.append(jokeInput)
 renderSubmitButton()
 renderTwoPartBtn()
 createCategoryList()
+submitOnePartListener()
 }
-function twoPartBtnClick(event) {
+
+function twoPartBtnClick(event) {                                          // "two part button click"
 
 console.log("clicked two part")
 event.target.parentNode.innerHTML =""
@@ -274,6 +276,7 @@ submitForm.append(setupInput, deliveryInput)
 renderSubmitButton()
 renderOnePartBtn()
 createCategoryList()
+submitTwoPartListener()
 }
 function renderSubmitButton() {
   const submitButton = document.createElement("button")
@@ -358,7 +361,7 @@ checkBoxLabel.append(checkBox)
 
 // submitForm.addEventListener("submit", (e) => {
 //   e.preventDefault() 
-//   console.log(e.target."setup-input")})
+//   console.log(e.target."setup-input")})                                                       R & D FOR capturing form data in an object
 
 
 // // create new joke object
@@ -374,3 +377,51 @@ checkBoxLabel.append(checkBox)
 
 // //  Input ffrom form elements two part of one part joke. 
 
+
+
+function submitOnePartListener() {
+  let submitOnePartForm = document.getElementById("submit-a-joke-card")
+submitOnePartForm.addEventListener("submit", (submitEvent) => {
+  submitEvent.preventDefault()
+  console.log(`${submitEvent} <--- CL submitEventOne`)
+  console.log(`${submitEvent.target["joke-input"]["value"]} <---- CONSOLE LOG EVENT target joke-input value`)
+  //console.log(`${submitEvent.target["setup-input"]["value"]}  <--- console log setup-input value`)
+  //console.log(`${submitEvent.target["delivery-input"]["value"]}  <--- console log delivery-input value`)
+  const newOPJoke = {
+    jokeKey: submitEvent.target}["joke-input"]["value"]
+})
+fetchnewJoke(newOPJoke)
+}
+
+function submitTwoPartListener() {
+  let submitTwoPartForm = document.getElementById("submit-a-joke-card")
+submitTwoPartForm.addEventListener("submit", (submitEvent) => {
+  submitEvent.preventDefault()
+  console.log(`${submitEvent} <--- CL submitEventOne`)
+  //console.log(`${submitEvent.target["joke-input"]["value"]} <---- CONSOLE LOG EVENT target joke-input value`)
+  console.log(`${submitEvent.target["setup-input"]["value"]}  <--- console log setup-input value`)
+  console.log(`${submitEvent.target["delivery-input"]["value"]}  <--- console log delivery-input value`)
+  /*const newTPJoke = {setupKey: submitEvent.target  }*/
+})
+}
+
+
+
+/*
+MODIFIED FETCH
+
+function submitFormPOST(newJoke) {
+
+
+
+
+  method: 'POST',
+  headers: { 
+    'Content-Type': 'application/json'
+  },
+  body: json.stringify(newJoke)
+})
+.then(resp => resp.json())
+.then((newJoke) => console.log(newJoke))
+}
+*/
