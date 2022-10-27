@@ -389,7 +389,7 @@ function submitOnePartListener() {
 submitOnePartForm.addEventListener("submit", (submitEvent) => {
   submitEvent.preventDefault()
   console.log(`${submitEvent} <--- CL submitEventOne`)
-  console.log(`${submitEvent.target["joke-input"]["value"]} <---- CONSOLE LOG EVENT target joke-input value`)
+  console.log(`${submitEvent.target["joke-input"].value} <---- CONSOLE LOG EVENT target joke-input value`)
   //console.log(`${submitEvent.target["setup-input"]["value"]}  <--- console log setup-input value`)
   //console.log(`${submitEvent.target["delivery-input"]["value"]}  <--- console log delivery-input value`)
 
@@ -399,14 +399,12 @@ submitOnePartForm.addEventListener("submit", (submitEvent) => {
     "category": "empty-category",
     "type": "single",
     "joke": submitEvent.target["joke-input"]["value"]
-                    }
-
-  radioButtons(newOPJoke)
-  console.log(`${newOPJoke["joke"]} I'm the joke called by key in an object`)
-  console.log(`${newOPJoke["category"]} I'm the category of the single joke called by key in an object`)
-}
-)
-//fetchnewJoke(newOPJoke)
+    }
+    radioButtons(newOPJoke)
+    console.log(`${newOPJoke["joke"]} I'm the joke called by key in an object`)
+    console.log(`${newOPJoke["category"]} I'm the category of the single joke called by key in an object`)
+    submitFormPost(newOPJoke)
+  })
 }
 
 function submitTwoPartListener() {
@@ -422,12 +420,12 @@ submitTwoPartForm.addEventListener("submit", (submitEvent) => {
     "type": "twopart",
     "setup": submitEvent.target["setup-input"].value,
     "delivery" : submitEvent.target["delivery-input"].value
-    submitFormPost()
   }
   radioButtons(newTPJoke)
   console.log(`${newTPJoke.setup} I'm the setup called by key and object`)
   console.log(`${newTPJoke.delivery} I'm the delivery called by key and object`)
   console.log(`${newTPJoke.category} I'm the category called by key and object`)
+  submitFormPost(newTPJoke)
 })
 }
 
@@ -441,16 +439,15 @@ for (radio of radios) {
 }
 
 
-function submitFormPOST(newJoke) {
-
-fetch("submiturl", 
-{
- method: 'POST',
+function submitFormPost(newJoke) {
+fetch("https://v2.jokeapi.dev/submit?dry-run", {
+  method: 'POST',
   headers: { 
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
   },
-  body: json.stringify(newJoke)
+  body: JSON.stringify(newJoke)
 })
 .then(resp => resp.json())
-.then((newJoke) => console.log(newJoke))
+.then((newJokeResp) => console.log(newJokeResp))
+// console.log(resp.json)
 }
