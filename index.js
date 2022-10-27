@@ -73,9 +73,10 @@ function init() {
       }
     } else if (keyEvent.key =="ArrowLeft"){
       if(counter > 0){
+        counter--;
         console.log(`${counter} Im going backwards`)
         determineJokeTypeCat(jokeData.jokes[counter])
-        counter--;
+        //counter--;
       } else if(counter < 0) {
         console.log("left key was pressed below 0")
       }
