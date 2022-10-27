@@ -2,13 +2,12 @@
 
 * {
     margin: 0px;
-    font-family: Arial, Helvetica, sans-serif;
   }
 
 body {
     /* display: grid; */
     width: 100%;
-    max-width: 1440px;
+    max-width: 1320px;
     min-height: 100vh;
     background-image: url('assets/joke-factory-background.jpg');
     background-size: cover;
@@ -19,56 +18,86 @@ body {
     color: #fff;
 }
 
+
+/*  Header Area */
+
 #menu-bar {
   background-color: black;
   width: 100%;
   display: block;
   padding-left: 20px;
   padding-right: 20px;
-  padding-top: 10px;
+  padding-top: 30px;
   padding-bottom: 0px;
   align-content: center;
   margin-top: 0;
   margin-left: 0;
   text-align: center;
-  justify-content: center;
+  align-items: baseline;;
   text-transform: uppercase;
-  /* align-items: center; */
-}
-
-#main-title {
-  font-family: 'Luckiest';
-  font-size: 42 px;
-  line-height: 48px;
-  padding-bottom: 0px;
-  margin-bottom: 0px;
-
 }
 
 #joke-categories-menu {
   margin-bottom: 40px;
 }
 
+#main-title {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 42 px;
+  line-height: 48px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+
+
+/*  Divs */
+
 #joke-of-the-day,
-#joke-by-category {
-  background-color: rgb(255,255,255, 0.55);
+#joke-by-category,
+#submit-joke-div {
+  background-color: rgb(255,255,255, 0.6);
   color: black;
   border-radius: 10px;
   max-width: 600px;
   padding-left: 20px;
   padding-right: 25px;
-  padding-top: 5px;
+  padding-top: 20px;
   padding-bottom: 30px;
   margin: 30px;
+  position: relative;
 }
+
+#submitForm {
+  display: grid;
+  position: absolute;
+  box-sizing: border-box;
+}
+
+
+input[type=text] {
+  padding:5px;
+  margin-top :6px;
+  margin-right: 6px;
+}
+
+
+/*  Header Font Styling */
 
 h2 {
   text-decoration: underline;
 }
 
-#setup,
-#jod {
-  font-style: italic;
+
+/*  Buttons */
+
+#one-part-button,
+#two-part-button {
+  margin-right: 6px;
+  margin-top: 10px;
+}
+
+#submit-button {
+  padding-left: 10px;
 }
 
 button {
@@ -78,26 +107,35 @@ button {
   padding: 10px;
   border-radius: 5px;
   margin-left: 0px;
-  margin-right: 16px;
+  margin-right: 6px;
+  margin-top: 0px;
 }
 
 button:hover {
   background-color: #fff;
   transition: 0.7s;
   color: black;
-  border: 2px solid black;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+button:focus {
+  background-color: black;
+  transition: 0.7s;
+  color: #df1c18;
+  border: 0px solid black;
   cursor: pointer;
 }
 
 button:active {
-  background-color: #fff;
+  background-color: black;
   transition: 0.7s;
-  color: #ff1410;
-  border: 2px solid black;
+  color: #df1c18;
+  border: 0px solid black;
   cursor: pointer;
 }
 
-input[type=submit] {
+input[type="submit"] {
   background-color: black;
   color: white;
   border: black;
@@ -105,7 +143,7 @@ input[type=submit] {
   border-radius: 5px;
 }
 
-input[type=submit]:hover {
+input[type="submit"]:hover {
   background-color: #fff;
   transition: 0.7s;
   color: black;
@@ -113,23 +151,10 @@ input[type=submit]:hover {
   cursor: pointer;
 }
 
-#submit-joke-div {
-  background-color: rgb(255,255,255, 0.55);
-  color: black;
-  border-radius: 10px;
-  min-height: 100px;
-  max-width: 600px;
-  padding-left: 20px;
-  padding-right: 25px;
-  padding-top: 5px;
-  padding-bottom: 30px;
-  margin: 30px;
-  display: flex-box;
+input[type="radio"]{
+  margin: 0 15px 10px 2px;
 }
 
-#submitForm {
-  display: block;
-}
-#one-part-button {
-  margin-right: 10px
+label {
+  display: inline-block;
 }

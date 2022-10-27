@@ -266,6 +266,8 @@ const deliveryInput = document.createElement("input")
 
 setupInput.type = "text"
 deliveryInput.type = "text"
+setupInput.setAtribute = "setupInput-area"
+deliveryInput.setAtribute = "deliveryInput-area"
 
 setupInput.placeholder = "Input Setup Here"
 deliveryInput.placeholder = " Input Delivery here"
@@ -308,7 +310,6 @@ function renderTwoPartBtn() {
   submitForm.appendChild(twoPartBtn)
 }
 
-
 function jokeMaxHandler(keyEvent, buttonEvent){
   const btncontent = buttonEvent.target.textContent
   fetch(`https://v2.jokeapi.dev/joke/${btncontent}?amount=10?format=json&safe-mode`)
@@ -334,19 +335,20 @@ function createCategoryList() {
 }
 
 function createCheckBox(checkBoxContent) {
-
 const checkBox = document.createElement("input")
+const radioButtons = document.getElementById("submit-joke-radio")
 checkBox.class = "form-control"
 checkBox.type = "radio"
 checkBox.name = `category-checkbox`
 checkBox.value = `${checkBoxContent}`
 checkBox.id = `${checkBoxContent}-input`
+checkBox.label = `${checkBoxContent}`
 checkBox.setAttribute("required", "")
 //checkBox.label = `${checkBoxContent}`
 //checkBox.value = `${checkBoxContent}`
 const checkBoxLabel = document.createElement("label")
 checkBoxLabel.textContent = `${checkBoxContent}`
-submitForm.prepend(checkBoxLabel)
+radioButtons.append(checkBoxLabel)
 checkBoxLabel.append(checkBox)
 //console.log(submitForm)
 //console.log(checkBoxLabel)
