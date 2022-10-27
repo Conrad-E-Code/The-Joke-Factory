@@ -1,12 +1,29 @@
 let counter = 0
+// jokeJod is selecting the element we want the body of a single part joke of the day to be rendered on the page.
 const jokeJod = document.getElementById('jod')
+
+//setup JOD is the page element where the setup of a two part joke is rendered
 const setupJod = document.getElementById('setup')
+
+//deliveryJOD is the page element where the delivery of a two part joke is rendered
 const deliveryJod = document.getElementById('delivery')
+
+// jokeByCategory is the page element div that holds the  h3 , p, that either a two part or one part joke is rendered into
 const jokebyCategory = document.getElementById('joke-by-category')
+
+//set-up cat is an h3 where the setup of a two part joke by category is rendered.
 const setupCat = document.getElementById('setup-cat')
+
+//delivery cat is a p where the delivery is rendered. Two part joke
 const deliveryCat = document.getElementById('delivery-cat')
+
+//singleCat is a h3 where a single part joke is rendered by Category
 const singleCat = document.getElementById('cat-joke')
+
+//btn is the get a random joke button
 const btn = document.getElementById('random-joke')
+
+//these are all of the buttons for the categories.
 const anyButton = document.getElementById('any')
 const miscButton = document.getElementById('misc')
 const progButton = document.getElementById('programming')
@@ -14,8 +31,12 @@ const darkButton = document.getElementById('dark')
 const punButton = document.getElementById('pun')
 const spookyButton = document.getElementById('spooky')
 const xmasButton = document.getElementById('christmas')
+
+// putting the buttons into an array
 const catButtonArray = []
 catButtonArray.push(anyButton, miscButton, punButton, spookyButton, xmasButton, darkButton, progButton)
+
+//Looping over that array of buttons and adding event listener to each one.
 catButtonArray.forEach( (button) => {
   buttonAddListener(button)
 })
@@ -23,6 +44,10 @@ function buttonAddListener(button) {
   button.addEventListener('click', (buttonEvent) => {
     catButtonHandler(buttonEvent)})
 }
+
+//event handler for the category buttons, fetches 10 jokes by category has two callback functions:
+// scrollThruJoke and determineJokeTypeCat()
+
 function catButtonHandler(buttonEvent) {
   // console.log(event.target.textContent)
  const btncontent = buttonEvent.target.textContent
@@ -37,6 +62,7 @@ function catButtonHandler(buttonEvent) {
  })
 }
 
+//scrollThruJoke is a callback function for catButtonHandler that accept jokeData and Buttonevents, to carry the jokedata 
 function scrollThruJoke(jokeData, buttonEvent){
  document.addEventListener('keydown', (keyEvent)=> {
     scrollHandler(jokeData, keyEvent, buttonEvent)
@@ -110,7 +136,7 @@ fetch(`https://v2.jokeapi.dev/joke/${jokeCategory}?amount=1?format=json&safe-mod
     determineJokeType(jokeData)
   })
 }
-
+                                                  // buttun event listener below.
 btn.addEventListener('click', (e) => {
   // console.log(e)
   // if (counter < 10) {
@@ -214,32 +240,43 @@ renderOnePartBtn()
 renderTwoPartBtn()
 }
 renderSelectButtons()
-function onePartBtnClick(event) 
+function onePartBtnClick(event)                                               // one part create a joke click
 {
 console.log("clicked one-part")
 event.target.parentNode.innerHTML =""
 const jokeInput = document.createElement("Input")
 jokeInput.type = "text"
 jokeInput.placeholder = "Enter Joke Content Here"
+jokeInput.id = "joke-input"
 submitForm.append(jokeInput)
 renderSubmitButton()
 renderTwoPartBtn()
 createCategoryList()
+submitOnePartListener()
 }
-function twoPartBtnClick(event) {
+
+function twoPartBtnClick(event) {                                          // "two part button click"
 
 console.log("clicked two part")
 event.target.parentNode.innerHTML =""
+
 const setupInput = document.createElement("input")
 const deliveryInput = document.createElement("input")
+
 setupInput.type = "text"
 deliveryInput.type = "text"
+
 setupInput.placeholder = "Input Setup Here"
 deliveryInput.placeholder = " Input Delivery here"
+
+setupInput.id = "setup-input"
+deliveryInput.id = "delivery-input"
+
 submitForm.append(setupInput, deliveryInput)
 renderSubmitButton()
 renderOnePartBtn()
 createCategoryList()
+submitTwoPartListener()
 }
 function renderSubmitButton() {
   const submitButton = document.createElement("button")
@@ -299,14 +336,15 @@ const checkBox = document.createElement("input")
 checkBox.class = "form-control"
 checkBox.type = "checkbox"
 checkBox.name = `category-checkbox`
+checkBox.id = `${checkBoxContent}-input`
 //checkBox.label = `${checkBoxContent}`
-checkBox.value = `${checkBoxContent}`
+//checkBox.value = `${checkBoxContent}`
 const checkBoxLabel = document.createElement("label")
 checkBoxLabel.textContent = `${checkBoxContent}`
 submitForm.prepend(checkBoxLabel)
 checkBoxLabel.append(checkBox)
 //console.log(submitForm)
-console.log(checkBoxLabel)
+//console.log(checkBoxLabel)
 }
 
 /*
@@ -321,3 +359,69 @@ console.log(checkBoxLabel)
 </label>
 */
 
+// submitForm.addEventListener("submit", (e) => {
+//   e.preventDefault() 
+//   console.log(e.target."setup-input")})                                                       R & D FOR capturing form data in an object
+
+
+// // create new joke object
+// const newOnePartJoke = {}
+
+// const newTwoPartJoke = {}
+// //    NEED TO GET DATA FROM FORM AND ASSIGN HERE for one part joke
+
+// newOnePartJoke.joke = "something from the form (formInputElement.value)"
+// //    NEED TO GET DATA FROM FORM AND ASSIGN HERE for two part joke
+// newTwoPartJoke.setup = "something from the setup input (setupinput.value?)"
+// newTwoPartJoke.delivery = "something ditto from form (deliveryInput.value) "
+
+// //  Input ffrom form elements two part of one part joke. 
+
+
+
+function submitOnePartListener() {
+  let submitOnePartForm = document.getElementById("submit-a-joke-card")
+submitOnePartForm.addEventListener("submit", (submitEvent) => {
+  submitEvent.preventDefault()
+  console.log(`${submitEvent} <--- CL submitEventOne`)
+  console.log(`${submitEvent.target["joke-input"]["value"]} <---- CONSOLE LOG EVENT target joke-input value`)
+  //console.log(`${submitEvent.target["setup-input"]["value"]}  <--- console log setup-input value`)
+  //console.log(`${submitEvent.target["delivery-input"]["value"]}  <--- console log delivery-input value`)
+  const newOPJoke = {
+    jokeKey: submitEvent.target}["joke-input"]["value"]
+})
+fetchnewJoke(newOPJoke)
+}
+
+function submitTwoPartListener() {
+  let submitTwoPartForm = document.getElementById("submit-a-joke-card")
+submitTwoPartForm.addEventListener("submit", (submitEvent) => {
+  submitEvent.preventDefault()
+  console.log(`${submitEvent} <--- CL submitEventOne`)
+  //console.log(`${submitEvent.target["joke-input"]["value"]} <---- CONSOLE LOG EVENT target joke-input value`)
+  console.log(`${submitEvent.target["setup-input"]["value"]}  <--- console log setup-input value`)
+  console.log(`${submitEvent.target["delivery-input"]["value"]}  <--- console log delivery-input value`)
+  /*const newTPJoke = {setupKey: submitEvent.target  }*/
+})
+}
+
+
+
+/*
+MODIFIED FETCH
+
+function submitFormPOST(newJoke) {
+
+
+
+
+  method: 'POST',
+  headers: { 
+    'Content-Type': 'application/json'
+  },
+  body: json.stringify(newJoke)
+})
+.then(resp => resp.json())
+.then((newJoke) => console.log(newJoke))
+}
+*/
