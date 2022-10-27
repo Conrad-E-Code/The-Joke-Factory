@@ -1,4 +1,4 @@
-@import url('https://fonts.google.com/specimen/Luckiest+Guy');
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
 
 * {
     margin: 0px;
@@ -8,18 +8,18 @@
 body {
     /* display: grid; */
     width: 100%;
-    max-width: 1920px;
+    max-width: 1440px;
     min-height: 100vh;
     background-image: url('assets/joke-factory-background.jpg');
     background-size: cover;
     background-position: bottom right;
     background-attachment: fixed;
     background-color: #210504;
-    font-family: Open Sans, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     color: #fff;
 }
 
-#menu-bar{
+#menu-bar {
   background-color: black;
   width: 100%;
   display: block;
@@ -37,8 +37,8 @@ body {
 }
 
 #main-title {
-  font-family: Luckiest;
-  font-size: px;
+  font-family: 'Luckiest';
+  font-size: 42 px;
   line-height: 48px;
   padding-bottom: 0px;
   margin-bottom: 0px;
@@ -113,10 +113,11 @@ input[type=submit]:hover {
   cursor: pointer;
 }
 
-#submit-a-joke-card {
+#submit-joke-div {
   background-color: rgb(255,255,255, 0.55);
   color: black;
   border-radius: 10px;
+  min-height: 100px;
   max-width: 600px;
   padding-left: 20px;
   padding-right: 25px;
@@ -126,6 +127,9 @@ input[type=submit]:hover {
   display: flex-box;
 }
 
+#submitForm {
+  display: block;
+}
 #one-part-button {
-  margin: 10px
+  margin-right: 10px
 }

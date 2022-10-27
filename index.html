@@ -3,7 +3,11 @@
 
 <head>
     <meta charset="UTF-8"/>
-    <title>Joke Factory</title> <link rel="stylesheet" type="text/css" href="styles.css"/>
+    <title>Joke Factory</title>
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+    </style>
     <script defer type="text/javascript" src="./index.js"></script>
 </head>
 
@@ -35,14 +39,17 @@
             </div>
             <div id="joke-by-category">
                 <h2 id="joke-categoty-title">Jokes by Category</h2>
+                <p style= 'font-size: 13px; color: #333333;'>To see jokes by category, click on the button in the menu, then to scroll through jokes in the selected category, click your <em>right arrow</em> to get a new joke, and click the <em>left arrow</em> to go back</p>
                 <h3 id= "setup-cat"></h3>
                 <h3 id= "cat-joke"></h3>
                 <p id= "delivery-cat"></p>
 
             </div>
-            <div>
+            <div id="submit-joke-div">
+                <h2 id="jod-title">Submit a Joke</h2>
+                <p style= 'font-size: 13px; color: #333333;'> To submit a joke select <em>One Part Joke Form</em> for one line jokes, or select <em>Two Part Joke Form</em> for jokes with a set up and a delivery</p>
+                <br>
                 <form id="submit-a-joke-card">
-                    <h2 id="jod-title">Submit a Joke</h2>
                 </form>
             </div>
         </main>
