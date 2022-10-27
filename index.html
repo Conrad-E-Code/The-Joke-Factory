@@ -5,9 +5,6 @@
     <meta charset="UTF-8"/>
     <title>Joke Factory</title>
     <link rel="stylesheet" type="text/css" href="styles.css"/>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
-    </style>
     <script defer type="text/javascript" src="./index.js"></script>
 </head>
 
@@ -30,16 +27,19 @@
         <main>
             <div id="joke-of-the-day">
                 <h2 id="jod-title">Joke of the Day</h2>
+                <br>
                 <h3 id="setup"></h3>
                 <p id="delivery"></p>
                 <h3 id="jod"></h3>
                 <p id="joke-category"></p>
+                <br>
                 <button type="button" id="random-joke">Get A Random Joke</button>
                 <br>
             </div>
             <div id="joke-by-category">
                 <h2 id="joke-categoty-title">Jokes by Category</h2>
-                <p style= 'font-size: 13px; color: #333333;'>To see jokes by category, click on the button in the menu, then to scroll through jokes in the selected category, click your <em>right arrow</em> to get a new joke, and click the <em>left arrow</em> to go back</p>
+                <p style= 'font-size: 13px; color: #444;'>To see jokes by category, click on the button in the menu, then to scroll through jokes in the selected category, click your <em>right arrow</em> to get a new joke, and click the <em>left arrow</em> to go back</p>
+                <br>
                 <h3 id= "setup-cat"></h3>
                 <h3 id= "cat-joke"></h3>
                 <p id= "delivery-cat"></p>
@@ -47,8 +47,9 @@
             </div>
             <div id="submit-joke-div">
                 <h2 id="jod-title">Submit a Joke</h2>
-                <p style= 'font-size: 13px; color: #333333;'> To submit a joke select <em>One Part Joke Form</em> for one line jokes, or select <em>Two Part Joke Form</em> for jokes with a set up and a delivery</p>
+                <p style= 'font-size: 13px; color: #444;'>Got a funny joke up your sleeve? Go head and tell us... we are always up for a good laugh! To submit your joke select <em>One Part Joke Form</em> for one line jokes, or select <em>Two Part Joke Form</em> for jokes with a set up and a delivery</p>
                 <br>
+                <div id="submit-joke-radio"></div>
                 <form id="submit-a-joke-card">
                 </form>
             </div>

@@ -240,73 +240,7 @@ function init() {
     categoryCheckBoxArray.forEach((element) => {
       createCheckBox(element)
     })
-  }
-  
-  function createCheckBox(checkBoxContent) {
-  
-  const checkBox = document.createElement("input")
-  checkBox.class = "form-control"
-  checkBox.type = "radio"
-  checkBox.name = `category-checkbox`
-  checkBox.value = `${checkBoxContent}`
-  checkBox.id = `${checkBoxContent}-input`
-  checkBox.setAttribute("required", "")
-  const checkBoxLabel = document.createElement("label")
-  checkBoxLabel.textContent = `${checkBoxContent}`
-  submitForm.prepend(checkBoxLabel)
-  checkBoxLabel.append(checkBox)
-  }
-  function submitOnePartListener() {
-    let submitOnePartForm = document.getElementById("submit-a-joke-card")
-    submitOnePartForm.removeEventListener("submit", twoPartBtnClickHandler)
-  submitOnePartForm.addEventListener("submit", (submitEvent) => {
-    submitEvent.preventDefault()
-    console.log(`${submitEvent} <--- CL submitEventOne`)
-  
-    const newOPJoke = {
-      "category": "empty-category",
-      "type": "single",
-      "joke": submitEvent.target["joke-input"]["value"]
-      }
-      radioButtons(newOPJoke)
-     // console.log(`${newOPJoke["joke"]} I'm the joke called by key in an object`)                           SUBMIT EVENT CONSOLE LOGS FOR PRESENTATION
-      //console.log(`${newOPJoke["category"]} I'm the category of the single joke called by key in an object`)
-      submitFormPost(newOPJoke)
-     // console.log("submitOnePartListener Triggered")
-    })
-  }
-  
-  function submitTwoPartListener() {
-    let submitTwoPartForm = document.getElementById("submit-a-joke-card")
-    submitTwoPartForm.removeEventListener("submit", onePartBtnClickHandler)
-    submitTwoPartForm.addEventListener("submit", (submitEvent) => {
-    submitEvent.preventDefault()
-    //console.log(`${submitEvent} <--- CL submitEventOne`)                                                SUBMIT EVENT CONSOLE LOGS FOR PRESENTATION
-    //console.log(`${submitEvent.target["setup-input"].value}  <--- console log setup-input value`)
-    //console.log(`${submitEvent.target["delivery-input"].value}  <--- console log delivery-input value`)
-    const newTPJoke = {
-      "category": "empty-category", 
-      "type": "twopart",
-      "setup": submitEvent.target["setup-input"].value,
-      "delivery" : submitEvent.target["delivery-input"].value
-    }
-    radioButtons(newTPJoke)
-    console.log(`${newTPJoke.setup} I'm the setup called by key and object`)
-    console.log(`${newTPJoke.delivery} I'm the delivery called by key and object`)
-    console.log(`${newTPJoke.category} I'm the category called by key and object`)
-    submitFormPost(newTPJoke)
-    console.log("submitTwoPartListener Triggered")
-  })
-  }
-  
-  function radioButtons(newJoke) {
-  const radios = document.getElementsByName("category-checkbox")
-  for (radio of radios) {
-    if (radio.checked) {
-      newJoke.category = `${radio.value}`
-    }
-  }
-  }
+
   
   
   function submitFormPost(newJoke) {
