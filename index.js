@@ -341,6 +341,7 @@ checkBox.type = "radio"
 checkBox.name = `category-checkbox`
 checkBox.value = `${checkBoxContent}`
 checkBox.id = `${checkBoxContent}-input`
+checkBox.setAttribute("required", "")
 //checkBox.label = `${checkBoxContent}`
 //checkBox.value = `${checkBoxContent}`
 const checkBoxLabel = document.createElement("label")
@@ -409,7 +410,7 @@ submitOnePartForm.addEventListener("submit", (submitEvent) => {
 
 function submitTwoPartListener() {
   let submitTwoPartForm = document.getElementById("submit-a-joke-card")
-submitTwoPartForm.addEventListener("submit", (submitEvent) => {
+  submitTwoPartForm.addEventListener("submit", (submitEvent) => {
   submitEvent.preventDefault()
   console.log(`${submitEvent} <--- CL submitEventOne`)
   //console.log(`${submitEvent.target["joke-input"]["value"]} <---- CONSOLE LOG EVENT target joke-input value`)
