@@ -10,8 +10,7 @@ function init() {
 
 
   function catButtonLooper() {
-  //these are all of the buttons for the categories.
-
+    //these are all of the buttons for the categories
     const anyButton = document.getElementById('any')
     const miscButton = document.getElementById('misc')
     const progButton = document.getElementById('programming')
@@ -19,25 +18,25 @@ function init() {
     const punButton = document.getElementById('pun')
     const spookyButton = document.getElementById('spooky')
     const xmasButton = document.getElementById('christmas')
-    
+
     // putting the buttons into an array
     const catButtonArray = []
     catButtonArray.push(anyButton, miscButton, punButton, spookyButton, xmasButton, darkButton, progButton)
     
     //Looping over that array of buttons and adding event listener to each one.
-    catButtonArray.forEach( (button) => {
+    catButtonArray.forEach((button) => {
       buttonAddListener(button)
     })
 
     darkButton.addEventListener("click", () => {
     alert("SAFE MODE ENABLED, DARK JOKES UNAVAILABLE")
-  })
-    console.log("catButtonLooper() invoked: No Arguments: sets variables for buttons and adds them to catButtonArray, loops through every button in catButtonArray and invokes buttonAddListener(button)")
-}
-
+    })
 
     console.log("catButtonLooper() invoked: No Arguments: sets variables for buttons and adds them to catButtonArray, loops through every button in catButtonArray and invokes buttonAddListener(button)")
   }
+
+
+    console.log("catButtonLooper() invoked: No Arguments: sets variables for buttons and adds them to catButtonArray, loops through every button in catButtonArray and invokes buttonAddListener(button)")
 
 
   function buttonAddListener(button) {
@@ -59,7 +58,6 @@ function init() {
    fetch(`https://v2.jokeapi.dev/joke/${btncontent}?amount=10?format=json&safe-mode`)
     .then(resp => resp.json())
     .then(jokeData =>{
-    
       scrollThruJoke(jokeData, buttonEvent) 
       determineJokeTypeCat(jokeData.jokes[counter]) 
     })
@@ -72,7 +70,7 @@ function init() {
     document.addEventListener('keydown', (keyEvent)=> {
       scrollHandler(jokeData, keyEvent, buttonEvent)
     })
-    console.log("scrollThruJoke invoked: takes jokeData (array) and buttonEvent as arguments. adds keydown event listener to whole page, invokes scrollHandler passing down jokeData, buttonEvent, and keyEvent")
+      console.log("scrollThruJoke invoked: takes jokeData (array) and buttonEvent as arguments. adds keydown event listener to whole page, invokes scrollHandler passing down jokeData, buttonEvent, and keyEvent")
   }
 
 
@@ -97,7 +95,7 @@ function init() {
         determineJokeTypeCat(jokeData.jokes[counter])
         //counter--;
       } else if(counter < 0) {
-        console.log("left key was pressed below 0")
+          console.log("left key was pressed below 0")
         }
       }
   }
@@ -108,9 +106,8 @@ function init() {
     fetch(`https://v2.jokeapi.dev/joke/${btncontent}?amount=10?format=json&safe-mode`)
       .then(resp => resp.json())
       .then(jokeData =>{
-
-      scrollHandler(jokeData, keyEvent, buttonEvent)
-    })
+        scrollHandler(jokeData, keyEvent, buttonEvent)
+      })
     console.log("jokeMaxHandler invoked: takes keyEvent and buttonEvent as arguments: fetches 10 jokes using buttonevent.target.textContent as category in fetch URL, invokes scrollHandler, passes new jokeData (10 Jokes array) keyEvent and Button Event to scrollHandler.")
   }
 
@@ -122,7 +119,7 @@ function init() {
     } else {
       renderOnePartCat(joke)
       // console.log(`JOKE ${joke.joke}`)  
-    }
+      }
     console.log("determineJokeTypeCat(joke) invoked: Takes joke object as argument: If (joke.type === twopart) invokes renderTwoPartCat, else invokes renderOnePartCat")
   }
 
@@ -135,7 +132,7 @@ function init() {
     deliveryCat.textContent = `${joke.delivery}`
     console.log("renderTwoPartCat(joke) invoked: Takes joke object as argument: blanks out innerHTML of Joke By Category display elements. and displays setup/delivery value in Joke by Category") 
   }
-  
+
 
   function renderOnePartCat(joke) {
     singleCat.textContent = ''
@@ -183,7 +180,7 @@ function init() {
     deliveryJod.textContent = `${joke.delivery}`
     console.log("renderTwoPart(joke) invoked: Takes joke object as argument: blanks out innerhtml of Joke of the Day display elements and displays setup/delivery values in JOD")
   }
-  
+
 
   function renderOnePart(joke) {
     jokeJod.textContent = ''
@@ -216,6 +213,7 @@ function init() {
 
   function onePartBtnClickHandler(event) {                                              // one part create a joke click
     console.log("clicked one-part")
+    
     event.target.parentNode.innerHTML =""
     //event.target.parentNode.reset() didn't work
     const jokeInput = document.createElement("Input")
@@ -228,6 +226,7 @@ function init() {
     renderTwoPartBtn()
     createCategoryList()
     submitOnePartListener()
+    
     console.log("OnePartBtnClickHandler invoked: invokes renderSubmitButton, renderTwoPartBtn, createCategoryList, submitOnePartListener, builds form for 1 part joke, e.target.parentNode.inner HTML blankout")  
   }
   
@@ -258,26 +257,30 @@ function init() {
     submitTwoPartListener()
 
     console.log("twoPartBtnClickHandler invoked: invokes renderSubmitButton, renderOnePartBtn, createCategoryList, submitTwoPartListener, builds form for 2 part joke, e.target.parentNode.inner HTML blankout")
-}
+  }
 
 
   function renderSubmitButton() {
     const submitButton = document.createElement("button")
+    
     submitButton.id = "submit-button"
     submitButton.type = "submit"
     submitButton.textContent = "Submit a Joke"
     submitForm.append(submitButton)
+    
     console.log("renderSubmitButton invoked: creates submitButton, adds attributes, and appends to submitForm") 
   }
 
 
   function renderOnePartBtn() {
     const onePartBtn = document.createElement("button")
+    
     onePartBtn.textContent = "One Part Joke Form"
     onePartBtn.type = "button"
     onePartBtn.id = "one-part-button"
     submitForm.appendChild(onePartBtn)
     onePartBtn.addEventListener("click", (event) => {onePartBtnClickHandler(event)})
+    
     console.log("RenderOnePartBtn() invoked: Accepts no arguments: adds event listener to onePartBtn appends onePartBtn to submitForm adds attributes to onePartBtn, creates onePartBtn")
   }
 
@@ -295,15 +298,14 @@ function init() {
   }
   
 
-  function createCategoryList() 
-  {
+  function createCategoryList() {
     const categoryCheckBoxArray =["Any", "Christmas", "Spooky", "Pun", "Programming", "Misc", "Dark"]
     categoryCheckBoxArray.forEach((element) => {
       createCheckBox(element)
     })
-  console.log("createCategoryList() Invoked: Accepts no Arguments: runs for each loop on categoryCheckBoxArray and invokes createCheckbox for each array element")
+    console.log("createCategoryList() Invoked: Accepts no Arguments: runs for each loop on categoryCheckBoxArray and invokes createCheckbox for each array element")
   }
-  
+
 
   function createCheckBox(checkBoxContent) {
     const checkBox = document.createElement("input")
@@ -322,7 +324,7 @@ function init() {
     checkBoxLabel.append(checkBox)
 
     console.log ("createCheckBox invoked: Accepts a string argument: assigns attributes to a checkbox. prepends box to label, appends label to form. called on every checkbox in the categoryCheckBoxArray")
- }
+  }
 
 
   function submitOnePartListener() {
@@ -386,7 +388,7 @@ function init() {
       submitEvent.target.reset()
     })
   }
-  
+
 
   function radioButtons(newJoke) {
     const radios = document.getElementsByName("category-checkbox")
@@ -399,29 +401,25 @@ function init() {
   }
 
 
-  
-  function submitFormPost(newJoke)
-   {
-  fetch("https://v2.jokeapi.dev/submit?dry-run", {
-    method: 'POST',
-    headers: { 
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(newJoke)
-  })
-  .then(resp => resp.json())
-  .then((newJokeResp) => {console.log(newJokeResp)
- alert(`"SERVER MESSAGE: "${newJokeResp["message"]}" ADDITIONAL INFO: "${newJokeResp["additionalInfo"]}" "`)
-  })
-  console.log("submitFormPost invoked: takes jokeObject argument: performs fetch post to the server and then console logs the resp.json(might be out of order fetch)")
-
+  function submitFormPost(newJoke) {
+    fetch("https://v2.jokeapi.dev/submit?dry-run", {
+      method: 'POST',
+      headers: { 
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newJoke)
+    })
+    .then(resp => resp.json())
+    .then((newJokeResp) => {console.log(newJokeResp)
+    alert(`"SERVER MESSAGE: "${newJokeResp["message"]}" ADDITIONAL INFO: "${newJokeResp["additionalInfo"]}" "`)
+    })
+    console.log("submitFormPost invoked: takes jokeObject argument: performs fetch post to the server and then console logs the resp.json(might be out of order fetch)")
   }
 
   catButtonLooper()
   randomOneJoke()
   renderSelectButtons()
   console.log("init() invoked")
-
 }
 
 init()
