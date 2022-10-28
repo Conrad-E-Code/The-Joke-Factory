@@ -128,7 +128,7 @@ button:focus {
   background-color: #df1c18;
   transition: 0.7s;
   color: white;
-  border: 0px solid black;
+  border: 0px solid #df1c18;
   cursor: pointer;
 }
 
@@ -136,7 +136,7 @@ button:active {
   background-color: #df1c18;
   transition: 0.7s;
   color: white;
-  border: 0px solid black;
+  border: 0px solid #df1c18;
   cursor: pointer;
 }
 
