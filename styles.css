@@ -7,7 +7,7 @@
 body {
     /* display: grid; */
     width: 100%;
-    max-width: 1320px;
+    max-width: 1920px;
     min-height: 100vh;
     background-image: url('assets/joke-factory-background.jpg');
     background-size: cover;
@@ -16,6 +16,7 @@ body {
     background-color: #210504;
     font-family: 'Open Sans', sans-serif;
     color: #fff;
+    margin-bottom: 30px;
 }
 
 
@@ -24,11 +25,12 @@ body {
 #menu-bar {
   background-color: black;
   width: 100%;
+  min-width: 320px;
   display: block;
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 30px;
-  padding-bottom: 0px;
+  padding-bottom: 6px;
   align-content: center;
   margin-top: 0;
   margin-left: 0;
@@ -59,11 +61,14 @@ body {
   color: black;
   border-radius: 10px;
   max-width: 600px;
+  min-width: 290px;
   padding-left: 20px;
   padding-right: 25px;
   padding-top: 20px;
   padding-bottom: 30px;
-  margin: 30px;
+  margin-top: 50px;
+  margin-left: 30px;
+  margin-right: 30px;
   position: relative;
 }
 
@@ -104,7 +109,7 @@ button {
   background-color: black;
   color: #fff;
   border: black;
-  padding: 10px;
+  padding: 8px;
   border-radius: 5px;
   margin-left: 0px;
   margin-right: 6px;
@@ -120,17 +125,17 @@ button:hover {
 }
 
 button:focus {
-  background-color: black;
+  background-color: #df1c18;
   transition: 0.7s;
-  color: #df1c18;
+  color: white;
   border: 0px solid black;
   cursor: pointer;
 }
 
 button:active {
-  background-color: black;
+  background-color: #df1c18;
   transition: 0.7s;
-  color: #df1c18;
+  color: white;
   border: 0px solid black;
   cursor: pointer;
 }
