@@ -338,7 +338,7 @@ function init() {
     const newOPJoke = {
       "category": "empty-category",
       "type": "single",
-      "joke": submitEvent.target["joke-input"]["value"]
+      "joke": submitEvent.target["joke-input"].value
       }
 
       radioButtons(newOPJoke)
