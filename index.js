@@ -11,6 +11,7 @@ function init() {
 
   function catButtonLooper() {
   //these are all of the buttons for the categories.
+
     const anyButton = document.getElementById('any')
     const miscButton = document.getElementById('misc')
     const progButton = document.getElementById('programming')
@@ -27,6 +28,13 @@ function init() {
     catButtonArray.forEach( (button) => {
       buttonAddListener(button)
     })
+
+    darkButton.addEventListener("click", () => {
+    alert("SAFE MODE ENABLED, DARK JOKES UNAVAILABLE")
+  })
+    console.log("catButtonLooper() invoked: No Arguments: sets variables for buttons and adds them to catButtonArray, loops through every button in catButtonArray and invokes buttonAddListener(button)")
+}
+
 
     console.log("catButtonLooper() invoked: No Arguments: sets variables for buttons and adds them to catButtonArray, loops through every button in catButtonArray and invokes buttonAddListener(button)")
   }
@@ -337,7 +345,7 @@ function init() {
       console.log(`${newOPJoke["category"]} I'm the category of the single joke called by key in an object inside sopl`)
       
       submitFormPost(newOPJoke)
-      
+
       console.log("submitOnePartListener invoked: No arguments:  2 console logs of the object after radioButtons. invokes radioButtons creates newOPJoke object adds event listener to the submitOnePartForm variable")
       
       submitEvent.target.reset()
@@ -391,17 +399,22 @@ function init() {
   }
 
 
-  function submitFormPost(newJoke) {
-    fetch("https://v2.jokeapi.dev/submit?dry-run", {
-      method: 'POST',
-      headers: { 
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newJoke)
-    })
-    .then(resp => resp.json())
-    .then((newJokeResp) => console.log(newJokeResp))
-    console.log("submitFormPost invoked: takes jokeObject argument: performs fetch post to the server and then console logs the resp.json(might be out of order fetch)")
+  
+  function submitFormPost(newJoke)
+   {
+  fetch("https://v2.jokeapi.dev/submit?dry-run", {
+    method: 'POST',
+    headers: { 
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(newJoke)
+  })
+  .then(resp => resp.json())
+  .then((newJokeResp) => {console.log(newJokeResp)
+ alert(`"SERVER MESSAGE: "${newJokeResp["message"]}" ADDITIONAL INFO: "${newJokeResp["additionalInfo"]}" "`)
+  })
+  console.log("submitFormPost invoked: takes jokeObject argument: performs fetch post to the server and then console logs the resp.json(might be out of order fetch)")
+
   }
 
   catButtonLooper()
